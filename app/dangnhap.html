@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SHOP</title>
+    <title>SHOP MSI</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../public/css/main.css">
+    <link href="../public/css/menu.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/bootstrap-theme.min.css">
+    <script src="../public/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Anton|Concert+One" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../public/css/dangnhap.css">
+</head>
+<script type="text/javascript">
+    function xuly()
+    {
+        var str=myForm.text.value;
+            if( str.length <=2 )
+            {
+                alert( "Vui lòng Nhập Tài Khoản từ 2 ký tự trở lên!" );
+                document.myForm.text.focus() ;
+                return false;
+            }
+        var str=myForm.Password.value;
+            if( str.length <=7 )
+            {
+                alert( "Vui lòng nhập Mật Khẩu từ 8 ký tự trở lên!" );
+                document.myForm.Password.focus() ;
+                return false;
+            } 
+        alert("Đăng Nhập Thành Công")     
+    }   
+    </script>
+<body>
+    <div class="row dau1" style="background-color:#f2f2f2"> <!-Phần đầu 1 ->
+        <div class="container">
+            <div id="daut">
+            <select style="color: black">
+                <option>Chọn Ngôn Ngữ</option>
+                <option>Tiếng Việt</option>
+                <option>Tiếng Anh</option>
+            </select>
+                <h7 id="bd">Hotline 0123 456 789</h7>
+            </div>
+            <div id="daup">
+                <ul>
+                    <li><a href="dangnhap.html"><img src="../public/img/icondn.png">Đăng Nhập</a></li>
+                    <li id="bd"><a href="dangky.html"><img src="../public/img/icondk.png">Đăng Ký</a></li>
+                    <li id="bd"><a href=""><img src="../public/img/iconmap.png">Giỏ Hàng</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row dau2 col-md-12">
+        <div class="container">
+            <div class="col-md-3" id="logoh">
+                <a href="index.html"><img style="height: 90px; width: 255px" src="../public/img/logohome.png"></a>
+            </div>
+            <div class="col-md-5">
+                <div style="padding-top: 22px">
+                    <form action="">
+                        <input type="search" placeholder="Tìm kiếm sản phẩm/mã sản phẩm ...">
+                    </form>
+                </div>
+                <div id="dchi">
+                    Địa chỉ : 15CDTH11, Trường Cao Đẳng Công Nghiệp , TP.HUẾ
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="lgicon">
+                    <img src="http://hstatic.net/716/1000026716/1000149002/giaohang.png?v=124"><small>Giao hàng toàn quốc</small>
+                    <img src="../public/img/khien.png"><small>Giao dịch an toàn</small>
+                </div>
+            </div>
+        </div> <!-Phần đầu 2 ->
+    </div>
+    <div class="row dau3"> <!-Đầu 3->
+        <div class="container" >
+            <ul id="nav">
+                <li class="chon"><a href="index.html" style="font-size: 17px">Trang Chủ</a></li>
+                <li><a href="" style="font-size: 17px">Tai Nghe</a></li>
+                <li><a href="" style="font-size: 17px">Bàn Phím</a></li>
+                <li><a href="" style="font-size: 17px">Chuột</a></li>
+                <li><a href="" style="font-size: 17px">Mousepad</a></li>
+                <li><a href="" style="font-size: 17px">Tin Tức</a></li>
+                <li><a href="" style="font-size: 17px">Liên Hệ</a></li>
+            </ul>
+        </div>
+    </div><!-end ->
+
+    <div id="giuaqc" style="padding-top: 10px">
+        <div class="container">
+            <div class="col-md-9 col-xs-9" style="height: 300px">
+                <img style="height: 100%;width: 100%" src="img/gif.gif">
+            </div>
+            <div class="col-md-3 col-xs-3" style="height:300px">
+                <img style="height: 100%;width: 100%" src="img/logomsi2.jpg"> 
+            </div>
+        </div> <!-Đoạn đầu 1 của trang-><!-Phần ảnh ->
+    </div>
+    <div class="row main" style="margin-top: 25px"> <!-Phần giửa chính->
+        <div class="container">
+            <div class="hangmain2">
+                <center><b style="font-size: 25px;color: #cc0000"><img style="width: 50px" src="https://asset.msi.com/global/picture/app/plus-icon.png">ĐĂNG NHẬP &nbsp;&nbsp;&nbsp;&nbsp;</b></center>
+            </div>
+            <div >
+                <form name="myForm" onsubmit="return(xuly());" action="admin/login-action.php" method="post">
+                    <table cellpadding="15" align="center">
+                        <tr>
+                            <td><b>Tài Khoản:</b></td>
+                        </tr>
+                        <tr>
+                            
+                            <td><input type="text" name="Email" placeholder="Tên tài khoản (A~0; >=6 kí tự)" value="" required size="40"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Mật Khẩu:</b></td>
+                        </tr>
+                        <tr>
+                            <td><input type="Password" name="Password"  placeholder="Mật khẩu (A~0; >= 8 kí tự)" value="" required size="40"></td>
+                        </tr>
+                        <tr>
+                            <td style=""><input type="checkbox" checked="checked"> Nhớ mật khẩu</td>
+                        </tr>
+                        <tr>
+                            <td><p style="color: blue;">Không đăng nhập được <a href="" style="color: red">Quên MK!</a></p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    <button type="reset" class="btcc">Cancel</button>
+                                    <button type="submit" class="btok">Đăng Nhập</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>    
+                </form>
+            </div>
+        </div>
+</body>
+</html>

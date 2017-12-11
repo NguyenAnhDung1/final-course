@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <?php
-  define("URL_SITE", "http://localhost/final-course/app/");
+  define("URL_SITE", "http://localhost:8080/New%20folder/final-course/app/");
 ?>
 <?php
   unset($_SESSION["login"]);
