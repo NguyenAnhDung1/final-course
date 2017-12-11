@@ -6,11 +6,12 @@
   }
 
   $id = $_GET["id"];
-  $sql = "select * from catalogs where id='$id'";
+  $sql = "select * from users where id='$id'";
   $result = $conn->query($sql);
   $row = $result->fetch_assoc();
   $name = $row["name"];
-  $description = $row["description"];
+  $email = $row["email"];
+  $role = $row["role"];
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,7 +23,7 @@
   <body class="sidebar-mini fixed">
     <div class="wrapper">
       <!-- Navbar-->
-         <header class="main-header hidden-print"><a class="logo" href="../index.php">Kidboss</a>
+      <header class="main-header hidden-print"><a class="logo" href="../index.php">Kidboss</a>
         <nav class="navbar navbar-static-top">
           <!-- Sidebar toggle button--><a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
           <!-- Navbar Right Menu-->
@@ -52,14 +53,13 @@
                     echo "User";
                     break;
                 }; ?>
-              </p>
-            </div>
+              </p>            </div>
           </div>
           <!-- Menu Trái-->
           <ul class="sidebar-menu">
-            <li class="treeview"><a href="../user/#"><i class="fa fa-laptop"></i><span>Quản lí User</span><i class="fa fa-angle-right"></i></a>
+            <li class="active"><a href="#"><i class="fa fa-laptop"></i><span>Quản lí User</span><i class="fa fa-angle-right"></i></a>
             </li>
-            <li class="active"><a href="#"><i class="fa fa-edit"></i><span>Quản lí Danh mục</span><i class="fa fa-angle-right"></i></a>
+            <li class="treeview"><a href="../catalogs/#"><i class="fa fa-edit"></i><span>Quản lí Danh mục</span><i class="fa fa-angle-right"></i></a>
             </li>
             <li class="treeview"><a href="../products/#"><i class="fa fa-th-list"></i><span>Quản lí Sản phẩm</span><i class="fa fa-angle-right"></i></a>
             </li>
@@ -71,8 +71,8 @@
           <div class="col-md-6">
             <ul class="breadcrumb" style="float: left;">
               <li><i class="fa fa-home fa-lg"></i></li>
-              <li><a href="index.php">Danh mục</a></li>
-              <li><a href="#">Edit</a></li>
+              <li><a href="index.php">Users</a></li>
+              <li><a href="#">Edit Users</a></li>
             </ul>
           </div>
           <div class="col-md-6">
@@ -80,18 +80,34 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <form method="post" action="update.php">
+             <form method="post" action="update.php">
               <input type="hidden" value="<?php echo $id; ?>" name="id">
               <div class="row">
                 <i class="flash"><?php if(isset($_SESSION["flash"])) echo $_SESSION["flash"]; ?></i>
               </div>
               <div class="row">
-                <label>Tên danh mục </label>
+                <label>Ten nguoi dung:</label>
                 <input class="form-control" type="text" name="name" value="<?php echo $name; ?>">
               </div>
               <div class="row">
-                <label>Mô tả :</label>
-                <textarea class="form-control" name="description" value="<?php echo $description; ?>"></textarea>
+                <label>Email:</label>
+                <input class="form-control"  type="email" name="email" value="<?php echo $email; ?>">
+              </div>
+              <div class="row">
+                <label>Mat khau:</label>
+                <input class="form-control"  type="password" name="password">
+              </div>
+              <div class="row">
+                <label>Lap lai mat khau:</label>
+                <input class="form-control"  type="password" name="repassword">
+              </div>
+              <div class="row">
+                <label>Quyen:</label>
+                <select class="form-control" name="role">
+                  <option <?php if($role ==  2) echo "selected='true'"; ?> value="2">User</option>
+                  <option <?php if($role ==  1) echo "selected='true'"; ?> value="1">Editor</option>
+                  <option <?php if($role ==  0) echo "selected='true'"; ?> value="0">Admin</option>
+                </select>
               </div>
               <br>
               <div class="row">

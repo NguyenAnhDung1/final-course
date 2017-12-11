@@ -1,17 +1,4 @@
 <?php require_once "../../../db/mysql.php"; ?>
-<?php
-  if(!isset($_GET["id"])){
-    $_SESSION["flash"] = "Wrong params";
-    header("location: index.php");
-  }
-
-  $id = $_GET["id"];
-  $sql = "select * from catalogs where id='$id'";
-  $result = $conn->query($sql);
-  $row = $result->fetch_assoc();
-  $name = $row["name"];
-  $description = $row["description"];
-?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -22,14 +9,20 @@
   <body class="sidebar-mini fixed">
     <div class="wrapper">
       <!-- Navbar-->
-         <header class="main-header hidden-print"><a class="logo" href="../index.php">Kidboss</a>
+      <header class="main-header hidden-print"><a class="logo" href="../index.php">Kidboss</a>
         <nav class="navbar navbar-static-top">
           <!-- Sidebar toggle button--><a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
           <!-- Navbar Right Menu-->
           <div class="navbar-custom-menu">
             <ul class="top-nav">
               <!-- User Menu-->
-              <?php include "../User-menu.php" ?>
+              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
+                <ul class="dropdown-menu settings-menu">
+                  <li><a href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
+                  <li><a href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+                  <li><a href="../logout.php"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                </ul>
+              </li>
             </ul>
           </div>
         </nav>
@@ -57,9 +50,9 @@
           </div>
           <!-- Menu Trái-->
           <ul class="sidebar-menu">
-            <li class="treeview"><a href="../user/#"><i class="fa fa-laptop"></i><span>Quản lí User</span><i class="fa fa-angle-right"></i></a>
+            <li class="active"><a href="#"><i class="fa fa-laptop"></i><span>Quản lí User</span><i class="fa fa-angle-right"></i></a>
             </li>
-            <li class="active"><a href="#"><i class="fa fa-edit"></i><span>Quản lí Danh mục</span><i class="fa fa-angle-right"></i></a>
+            <li class="treeview"><a href="../catalogs/#"><i class="fa fa-edit"></i><span>Quản lí Danh mục</span><i class="fa fa-angle-right"></i></a>
             </li>
             <li class="treeview"><a href="../products/#"><i class="fa fa-th-list"></i><span>Quản lí Sản phẩm</span><i class="fa fa-angle-right"></i></a>
             </li>
@@ -71,8 +64,8 @@
           <div class="col-md-6">
             <ul class="breadcrumb" style="float: left;">
               <li><i class="fa fa-home fa-lg"></i></li>
-              <li><a href="index.php">Danh mục</a></li>
-              <li><a href="#">Edit</a></li>
+              <li><a href="index.php">Users</a></li>
+              <li><a href="#">Add Users</a></li>
             </ul>
           </div>
           <div class="col-md-6">
@@ -80,25 +73,40 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <form method="post" action="update.php">
-              <input type="hidden" value="<?php echo $id; ?>" name="id">
-              <div class="row">
-                <i class="flash"><?php if(isset($_SESSION["flash"])) echo $_SESSION["flash"]; ?></i>
-              </div>
-              <div class="row">
-                <label>Tên danh mục </label>
-                <input class="form-control" type="text" name="name" value="<?php echo $name; ?>">
-              </div>
-              <div class="row">
-                <label>Mô tả :</label>
-                <textarea class="form-control" name="description" value="<?php echo $description; ?>"></textarea>
-              </div>
-              <br>
-              <div class="row">
-                <button class="btn btn-primary">Submit</button>
-                <a class="btn btn-primary icon-btn" href="index.php">Quay về </a>
-              </div>
-            </form>
+            <form method="post" action="create.php">
+      <div class="row">
+        <i class="flash"><?php if(isset($_SESSION["flash"])) echo $_SESSION["flash"]; ?></i>
+      </div>
+      <div class="row">
+        <label>Họ tên:</label>
+        <input class="form-control" type="text" name="name">
+      </div>
+      <div class="row">
+        <label>Email:</label>
+        <input class="form-control"  type="email" name="email">
+      </div>
+      <div class="row">
+        <label>Mật khẩu:</label>
+        <input class="form-control"  type="password" name="password">
+      </div>
+      <div class="row">
+        <label>Nhập lại mật khẩu:</label>
+        <input class="form-control"  type="password" name="repassword">
+      </div>
+      <div class="row">
+        <label>Chức vụ :</label>
+        <select class="form-control" name="role">
+          <option value="2">User</option>
+          <option value="1">Editor</option>
+          <option value="0">Admin</option>
+        </select>
+      </div>
+      <br>
+      <div class="row">
+        <button class="btn btn-primary">Submit</button>
+        <a class="btn btn-primary icon-btn" href="index.php">Quay về </a>
+      </div>
+    </form>
           </div>
         </div>
       </div>

@@ -1,17 +1,4 @@
 <?php require_once "../../../db/mysql.php"; ?>
-<?php
-  if(!isset($_GET["id"])){
-    $_SESSION["flash"] = "Wrong params";
-    header("location: index.php");
-  }
-
-  $id = $_GET["id"];
-  $sql = "select * from catalogs where id='$id'";
-  $result = $conn->query($sql);
-  $row = $result->fetch_assoc();
-  $name = $row["name"];
-  $description = $row["description"];
-?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -22,14 +9,20 @@
   <body class="sidebar-mini fixed">
     <div class="wrapper">
       <!-- Navbar-->
-         <header class="main-header hidden-print"><a class="logo" href="../index.php">Kidboss</a>
+      <header class="main-header hidden-print"><a class="logo" href="../index.php">Kidboss</a>
         <nav class="navbar navbar-static-top">
           <!-- Sidebar toggle button--><a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
           <!-- Navbar Right Menu-->
           <div class="navbar-custom-menu">
             <ul class="top-nav">
               <!-- User Menu-->
-              <?php include "../User-menu.php" ?>
+              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
+                <ul class="dropdown-menu settings-menu">
+                  <li><a href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
+                  <li><a href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+                  <li><a href="../logout.php"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                </ul>
+              </li>
             </ul>
           </div>
         </nav>
@@ -57,9 +50,9 @@
           </div>
           <!-- Menu Trái-->
           <ul class="sidebar-menu">
-            <li class="treeview"><a href="../user/#"><i class="fa fa-laptop"></i><span>Quản lí User</span><i class="fa fa-angle-right"></i></a>
+            <li class="active"><a href="#"><i class="fa fa-laptop"></i><span>Quản lí User</span><i class="fa fa-angle-right"></i></a>
             </li>
-            <li class="active"><a href="#"><i class="fa fa-edit"></i><span>Quản lí Danh mục</span><i class="fa fa-angle-right"></i></a>
+            <li class="treeview"><a href="../catalogs/#"><i class="fa fa-edit"></i><span>Quản lí Danh mục</span><i class="fa fa-angle-right"></i></a>
             </li>
             <li class="treeview"><a href="../products/#"><i class="fa fa-th-list"></i><span>Quản lí Sản phẩm</span><i class="fa fa-angle-right"></i></a>
             </li>
@@ -71,34 +64,53 @@
           <div class="col-md-6">
             <ul class="breadcrumb" style="float: left;">
               <li><i class="fa fa-home fa-lg"></i></li>
-              <li><a href="index.php">Danh mục</a></li>
-              <li><a href="#">Edit</a></li>
+              <li><a href="#">Users</a></li>
             </ul>
           </div>
           <div class="col-md-6">
+            <p><a class="btn btn-primary icon-btn" href="new.php" style="float: right;"><i class="fa fa-plus"></i>Add User </a></p>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
-            <form method="post" action="update.php">
-              <input type="hidden" value="<?php echo $id; ?>" name="id">
-              <div class="row">
-                <i class="flash"><?php if(isset($_SESSION["flash"])) echo $_SESSION["flash"]; ?></i>
-              </div>
-              <div class="row">
-                <label>Tên danh mục </label>
-                <input class="form-control" type="text" name="name" value="<?php echo $name; ?>">
-              </div>
-              <div class="row">
-                <label>Mô tả :</label>
-                <textarea class="form-control" name="description" value="<?php echo $description; ?>"></textarea>
-              </div>
-              <br>
-              <div class="row">
-                <button class="btn btn-primary">Submit</button>
-                <a class="btn btn-primary icon-btn" href="index.php">Quay về </a>
-              </div>
-            </form>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Tên</th>
+                  <th>Email</th>
+                  <th>Chức vụ</th>
+                  <th>Sửa</th>
+                  <th>Xóa</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                  $sql = "select * from users";
+                  $result = $conn->query($sql);
+                  if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) { ?>
+                      <tr>
+                        <td><?php echo $row["name"]; ?></td>
+                        <td><?php echo $row["email"]; ?></td>
+                        <td><?php switch ($row["role"]) {
+                          case 0:
+                            echo "Admin";
+                            break;
+                          case 1:
+                            echo "Editor";
+                            break;
+                          case 2:
+                            echo "User";
+                            break;
+                        }; ?>
+                        <td><a class="btn btn-info" href="edit.php?id=<?php echo $row["id"];?>"><i class="fa fa-lg fa-edit"></i></a></td>;
+                        <td><a class="btn btn-warning" href="delete.php?id=<?php echo $row["id"];?>"><i class="fa fa-lg fa-trash"></i></a></td>;
+                      </tr>
+                <?php   }
+                  }
+                ?>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
