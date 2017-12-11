@@ -1,0 +1,197 @@
+body{
+	font-size:14px;
+	line-height: 1.42857143;
+    color: #333;
+
+}
+/*tim*/
+input {
+	outline: none;
+}
+	
+input[type=search] {
+	background: #ededed url('../img/search.png') no-repeat 3px  center;
+	border: solid 1px #ccc;
+	padding: 9px 10px 9px 40px;
+	width: 100%;
+	border-radius: 100px;
+	background-color: #f2f2f2;
+	
+}
+input[type=search]:focus {
+	background-color: #fff;
+	border-color: #6dcff6;
+	
+}
+
+
+#dau1{
+	background-color: #f6f6f6;
+    padding-top: 5px;
+    border-bottom: 1px solid #ebebeb;
+}
+#daut{
+	float: left;
+    color: #ce0069;
+    font-weight: 400;
+}
+#daup{
+	float:right;
+}
+#daup>ul>li{
+	list-style: none;
+	display: inline;
+}
+#bd{
+	border-left: 1px #999 solid;color: #ce0069;padding: 10px
+}
+#dau2{
+
+}
+#logoh{
+	float: left
+}
+
+#lgtim{
+	border-style: hidden;
+	
+	width: 50px;
+    height: 40px;
+    background: white url('../img/tk.jpg') no-repeat center;
+
+}
+#dchi{
+	text-align: center;
+    font-weight: 400;
+    color: #ce0069
+}
+#lgicon{
+	margin: 25px 0px 10px 0px;
+	float: right;
+}
+.rowmenu{
+	float:left;
+	background-color: 	#333333;
+	width: 100%;
+	background-size: cover;
+	
+}
+.ulmenu{
+	font-family: 'Anton', sans-serif;
+	margin: 0px 0px 0px 0px;
+	list-style: none;
+}
+.ulmenu>li{
+	float: left
+}
+#stylegio{font-size:20px;
+	font-family: 'Anton', sans-serif;
+	color: #cc0000;
+	padding: 12px 25px;
+}
+.boxphai{
+	height: 50px;
+	text-align: center;
+	padding: 5px 0px;
+    background-color: #333333;
+	color: white;
+    line-height: 35px;
+    border-radius: 100px;
+
+}
+
+.boxcheck>ul>li{
+	list-style: none;
+	font-size: 12px
+}
+.so2{
+	background-image: url("../img/so2.png");
+	float: left;
+    height: 42px;
+    width: 22px;
+}.so3{
+	background-image: url("../img/so3.png");
+	float: left;
+    height: 42px;
+    width: 22px;
+}
+.so4{
+	background-image: url("../img/so4.png");
+	float: left;
+    height: 42px;
+    width: 22px;
+}.so5{
+	background-image: url("../img/so5.png");
+	float: left;
+    height: 42px;
+    width: 22px;
+}.so6{
+	background-image: url("../img/so6.png");
+	float: left;
+    height: 42px;
+    width: 22px;
+}.so7{
+	background-image: url("../img/so7.png");
+	float: left;
+    height: 42px;
+    width: 22px;
+}.so8{
+	background-image: url("../img/so8.png");
+	float: left;
+    height: 42px;
+    width: 22px;
+}.so9{
+	background-image: url("../img/so9.png");
+	float: left;
+    height: 42px;
+    width: 22px;
+}.cham{
+	background-image: url("../img/cham.png");
+	background-position-x: left;
+    background-position-y: 0px;
+    background-size: 10px auto;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    float: left;
+    height: 42px;
+    width: 22px;
+}
+.mua{
+	color: white;
+	background: #293e6b;
+	position: absolute;
+}
+a.mua:hover{
+	background-color:#acd2d2;
+	color: red;
+	text-decoration: none;
+}
+.bdb{color: #eff2f6;
+	border-bottom: 2px solid #72c02c;
+	padding-bottom: 10px
+}
+.hangmain2{ border-radius: 100px;
+	height: 50px;
+	background: #333333;
+	padding: 0px 8px;
+	margin-bottom: 8px;
+}
+.phancuoi{
+	padding-top: 20px;
+	background: url("../img/msii.jpg") no-repeat ;
+	background-size: cover;
+	-webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    
+        
+}
+.bdsp{
+	border: solid 1px #ccc;
+}
+div.chon:hover{
+	border:2px solid #ff9999;
+	
+	
+   
+}

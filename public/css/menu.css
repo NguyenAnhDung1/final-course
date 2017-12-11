@@ -1,0 +1,39 @@
+#nav {
+    display:inline-block;
+    width:100%;
+    margin:0px auto;
+    padding:0;
+    background:#333333 ;
+    border-radius:10px; 
+    
+}
+#nav li{
+    margin:10px;
+    float:left;
+    position:relative;
+    list-style:none;
+}
+#nav a {
+    font-weight:bold;
+    color:#e7e5e5;
+    text-decoration:none;
+    display:block;
+    padding:8px 20px;
+
+    border-radius:10px; 
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    text-shadow:0 2px 2px rgba(0,0,0, .7);
+}
+
+/*chon menu*/
+#nav .chon a, #nav li:hover a {
+    background:white;
+    color:#000;
+    border-top:1px solid #f8f8f8;
+    text-shadow:0 2px 2px white;
+    
+}
+#daup{
+display:inline-block
+}
